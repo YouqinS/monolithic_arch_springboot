@@ -3,7 +3,10 @@ database: mysql
 
 spring:
   datasource:
-    url: "jdbc:mysql://mysql_lan:3306/bookstore?useUnicode=true&characterEncoding=utf-8"
-    username: "root"
-    password: "[4321qwer]"
+    url: "jdbc:mysql://localhost:3307/bookstore?useUnicode=true&characterEncoding=utf-8"
+    username: root
+    password: my-secret-pw
     initialization-mode: always
+  liquibase:
+#    enabled: false
+    change-log: classpath:db/liquibase/changelog.xml
