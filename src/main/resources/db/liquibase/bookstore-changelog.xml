@@ -1,0 +1,125 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="youqin (generated)" id="1707865052122-1">
+        <createTable tableName="account">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="username" type="VARCHAR(50)"/>
+            <column name="password" type="VARCHAR(100)"/>
+            <column name="name" type="VARCHAR(50)"/>
+            <column name="avatar" type="VARCHAR(100)"/>
+            <column name="telephone" type="VARCHAR(20)"/>
+            <column name="email" type="VARCHAR(100)"/>
+            <column name="location" type="VARCHAR(100)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="youqin (generated)" id="1707865052122-2">
+        <createTable tableName="advertisement">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="image" type="VARCHAR(100)"/>
+            <column name="product_id" type="INT UNSIGNED"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="youqin (generated)" id="1707865052122-3">
+        <createTable tableName="payment">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="pay_id" type="VARCHAR(100)"/>
+            <column name="create_time" type="datetime"/>
+            <column name="total_price" type="DECIMAL(10)"/>
+            <column name="expires" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="payment_link" type="VARCHAR(300)"/>
+            <column name="pay_state" type="VARCHAR(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="youqin (generated)" id="1707865052122-4">
+        <createTable tableName="product">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="title" type="VARCHAR(50)"/>
+            <column name="price" type="DECIMAL(10)"/>
+            <column name="rate" type="FLOAT(12)"/>
+            <column name="description" type="VARCHAR(8000)"/>
+            <column name="cover" type="VARCHAR(100)"/>
+            <column name="detail" type="VARCHAR(100)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="youqin (generated)" id="1707865052122-5">
+        <createTable tableName="specification">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="item" type="VARCHAR(50)"/>
+            <column name="value" type="VARCHAR(100)"/>
+            <column name="product_id" type="INT UNSIGNED"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="youqin (generated)" id="1707865052122-6">
+        <createTable tableName="stockpile">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="amount" type="INT"/>
+            <column name="frozen" type="INT"/>
+            <column name="product_id" type="INT UNSIGNED"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="youqin (generated)" id="1707865052122-7">
+        <createTable tableName="wallet">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="money" type="DECIMAL(10)"/>
+            <column name="account_id" type="INT UNSIGNED"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="youqin (generated)" id="1707865052122-8">
+        <createIndex associatedWith="" indexName="account_id" tableName="wallet">
+            <column name="account_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="youqin (generated)" id="1707865052122-9">
+        <createIndex associatedWith="" indexName="product_id" tableName="advertisement">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="youqin (generated)" id="1707865052122-10">
+        <createIndex associatedWith="" indexName="product_id" tableName="specification">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="youqin (generated)" id="1707865052122-11">
+        <createIndex associatedWith="" indexName="product_id" tableName="stockpile">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="youqin (generated)" id="1707865052122-12">
+        <createIndex associatedWith="" indexName="title" tableName="product">
+            <column name="title"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="youqin (generated)" id="1707865052122-13">
+        <createIndex associatedWith="" indexName="username" tableName="account">
+            <column name="username"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="youqin (generated)" id="1707865052122-14">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="advertisement" constraintName="advertisement_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="product" validate="true"/>
+    </changeSet>
+    <changeSet author="youqin (generated)" id="1707865052122-15">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="specification" constraintName="specification_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="product" validate="true"/>
+    </changeSet>
+    <changeSet author="youqin (generated)" id="1707865052122-16">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="stockpile" constraintName="stockpile_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="product" validate="true"/>
+    </changeSet>
+    <changeSet author="youqin (generated)" id="1707865052122-17">
+        <addForeignKeyConstraint baseColumnNames="account_id" baseTableName="wallet" constraintName="wallet_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="account" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

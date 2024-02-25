@@ -1,0 +1,20 @@
+apiVersion: v1
+data:
+  __init__.py: '# -*- coding: utf-8 -*-'
+  example_functions.py: |-
+    # -*- coding: utf-8 -*-
+
+    import random
+
+
+    def choose_random_page():
+        pages = [
+
+            '/restful/products',
+            '/restful/products/4'        
+        ]
+
+        return random.choice(pages)
+kind: ConfigMap
+metadata:
+  name: my-loadtest-lib

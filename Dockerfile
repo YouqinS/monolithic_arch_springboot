@@ -4,7 +4,7 @@ MAINTAINER icyfenix
 
 ENV SPRING_OUTPUT_ANSI_ENABLED=ALWAYS \
     JAVA_OPTS="" \
-    PROFILES="default"
+    PROFILES="mysql"
 
 ADD /target/*.jar /bookstore.jar
 
